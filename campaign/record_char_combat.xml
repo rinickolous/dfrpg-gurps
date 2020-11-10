@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_combat">
+		<script>
+			function onHealthChanged()
+				local rActor = ActorManager.getActor("pc", getDatabaseNode());
+				ActionDamage.updateDamage(rActor);
+			end
+			function onFatigueChanged()
+				local rActor = ActorManager.getActor("pc", getDatabaseNode());
+				ActionFatigue.updateFatigue(rActor);
+			end
+      function onEncumbranceChanged()
+				local rActor = ActorManager.getActor("pc", getDatabaseNode());
+				ActorManager2.updateEncumbrance(rActor);
+      end
+		</script>
+		<sheetdata>
+		
+			<!-- CURRENT STATS -->
+			
+			<frame_char name="currentattributesframe">
+				<bounds>15,0,270,100</bounds>
+			</frame_char>
+			<label_frametop>
+				<anchored to="currentattributesframe" />
+				<static textres="char_label_injuryandfatigure" />
+			</label_frametop>
+
+			<number_combat_attribute name="hps" source="attributes.hps">
+				<anchored to="currentattributesframe" position="insidetopleft" offset="15,40" />
+				<tabtarget next="injury" />
+				<readonly />
+			</number_combat_attribute>
+			<label_attribute>
+				<anchored to="hps" />
+				<static>HP</static>
+			</label_attribute>
+
+			<number_dropadd name="injury" source="attributes.injury">
+				<anchored to="hps" width="25" height="25">
+					<bottom />
+					<left anchor="right" offset="7" />
+				</anchored>
+				<tabtarget prev="hps" next="fps" />
+				<hideonvalue value="0" />
+				<min value="0" />
+				<script>
+					function onValueChanged()
+						window.onHealthChanged();
+					end
+				</script>
+			</number_dropadd>
+
+			<simplestring name="hpstatus" source="attributes.hpstatus">
+				<anchored to="injury" width="40" height="20">
+					<top offset="-20" />
+					<left anchor="left" />
+				</anchored>
+				<color>#C11B17</color>
+				<readonly />
+			</simplestring>
+
+			<number_combat_attribute name="fps" source="attributes.fps">
+				<anchored to="currentattributesframe" position="insidetopleft" offset="95,40" />
+				<tabtarget prev="injury" next="fatigue" />
+				<readonly />
+			</number_combat_attribute>
+			<label_attribute>
+				<anchored to="fps" />
+				<static>FP</static>
+			</label_attribute>
+
+			<number_dropadd name="fatigue" source="attributes.fatigue">
+				<script>
+					function onValueChanged()
+						window.onFatigueChanged();
+					end
+				</script>
+				<anchored to="fps" width="25" height="25">
+					<bottom />
+					<left anchor="right" offset="7" />
+				</anchored>
+				<tabtarget prev="fps" next="cps" />
+				<hideonvalue value="0" />
+				<min value="0" />
+			</number_dropadd>
+
+			<simplestring name="fpstatus" source="attributes.fpstatus">
+				<anchored to="fatigue" width="40" height="20">
+					<top offset="-20" />
+					<left anchor="left" />
+				</anchored>
+				<color>#C11B17</color>
+				<readonly />
+			</simplestring>
+			
+			<number_combat_attribute name="cps" source="attributes.cps">
+				<anchored to="currentattributesframe" position="insidetopleft" offset="175,40" />
+				<tabtarget prev="fatigue" next="control" />
+			</number_combat_attribute>
+			<label_attribute>
+				<anchored to="cps" />
+				<static>CM</static>
+			</label_attribute>
+
+			<number_dropadd name="control" source="attributes.control">
+				<anchored to="cps" width="25" height="25">
+					<bottom />
+					<left anchor="right" offset="7" />
+				</anchored>
+				<tabtarget prev="cps" next="dodge" />
+				<hideonvalue value="0" />
+				<min value="0" />
+			</number_dropadd>
+
+			<simplestring name="cpstatus" source="attributes.cpstatus">
+				<anchored to="control" width="40" height="20">
+					<top offset="-20" />
+					<left anchor="left" />
+				</anchored>
+				<color>#C11B17</color>
+				<readonly />
+			</simplestring>
+
+			<button_checkbox name="halfmovedodge" source="attributes.halfmovedodge">
+				<anchored to="currentattributesframe" position="insidetopleft" offset="60,72" width="20" height="20" />
+				</button_checkbox>
+				<label name="halfmovedodge_label">
+				<anchored to="currentattributesframe" position="insidetopleft" offset="80,72" />
+				<static textres="char_label_halfmovedodge" />
+			</label>
+
+			<!-- DEFENSES -->
+			<frame_char name="defensesframe">
+				<bounds>274,0,235,100</bounds>
+			</frame_char>
+			<label_frametop>
+				<anchored to="defensesframe" />
+				<static textres="char_label_defenses" />
+			</label_frametop>
+
+			<number_attribute name="dodge" source="combat.dodge">
+				<rollable_dodge />
+				<anchored to="defensesframe" position="insidetopleft" offset="22,40" />
+				<tabtarget prev="fatigue" next="parry" />
+				<default>0</default>
+				<readonly />
+			</number_attribute>
+			<label_attribute>
+				<anchored to="dodge" />
+				<static textres="char_label_dodge" />
+			</label_attribute>
+
+			<number_attribute name="parry" source="combat.parry">
+				<rollable_parry />
+				<anchored to="defensesframe" position="insidetopleft" offset="72,40" />
+				<tabtarget prev="dodge" next="block" />
+				<default>0</default>
+			</number_attribute>
+			<label_attribute>
+				<anchored to="parry" />
+				<static textres="char_label_parry" />
+			</label_attribute>
+
+			<number_attribute name="block" source="combat.block">
+				<rollable_block />
+				<anchored to="defensesframe" position="insidetopleft" offset="122,40" />
+				<tabtarget prev="parry" next="dr" />
+				<default>0</default>
+				</number_attribute>
+			<label_attribute>
+				<anchored to="block" />
+				<static textres="char_label_block" />
+			</label_attribute>
+
+			<string_attribute name="dr" source="combat.dr">
+				<anchored to="defensesframe" position="insidetopleft" offset="172,40" />
+				<tabtarget prev="block" next="cm"/>
+			</string_attribute>
+			<label_attribute>
+				<anchored to="dr" />
+				<static textres="char_label_dr" />
+			</label_attribute>
+
+
+			<subwindow name="meleecombat">
+				<bounds>0,100,-1,-2</bounds>
+				<class>charsheet_meleecombat</class>
+			</subwindow>
+
+			<subwindow name="rangedcombat">
+				<bounds>0,100,-1,-2</bounds>
+				<class>charsheet_rangedcombat</class>
+			</subwindow>
+
+			<subwindow name="defenses">
+				<bounds>0,100,-1,-2</bounds>
+				<class>charsheet_defenses</class>
+			</subwindow>
+
+			<tabs_charcombat>
+				<tab>
+					<icon>tab_meleecombat</icon>
+					<subwindow>meleecombat</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_rangedcombat</icon>
+					<subwindow>rangedcombat</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_defenses</icon>
+					<subwindow>defenses</subwindow>
+				</tab>
+				<activate>1</activate>
+			</tabs_charcombat>
+		</sheetdata>
+	</windowclass>
+
+</root>

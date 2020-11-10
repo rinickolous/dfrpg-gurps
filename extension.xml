@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <properties>
+    <name>Dungeon Fantasy</name>
+    <version>1.1</version>
+    <author>neck</author>
+    <description>Dungeon Fantasy Conversion for GURPS</description>
+	<ruleset>
+      <name>GURPS</name>
+    </ruleset>
+	<loadorder>35</loadorder>
+  </properties>
+  <announcement text="Dungeon Fantasy Conversion for GURPS Ruleset v1.1\nBy neck" font="emotefont"/>
+  <base>
+  
+	<!-- High Level Scripts -->
+	<script name="ActorManager2" file="scripts/manager_actor2.lua" />
+	
+	<!-- Campaign Records -->
+	<includefile source="campaign/record_ability.xml" />
+	
+	<includefile source="campaign/record_char.xml" />
+	<includefile source="campaign/record_char_abilities.xml" />
+	<includefile source="campaign/record_char_combat.xml" />
+	<includefile source="campaign/record_char_inventory.xml" />
+	<includefile source="campaign/record_char_main.xml" />
+	<includefile source="campaign/record_char_meleecombat.xml" />
+	<includefile source="campaign/record_char_notes.xml" />
+	<includefile source="campaign/record_char_other.xml" />
+	<includefile source="campaign/record_char_rangedcombat.xml" />
+	<includefile source="campaign/record_char_traits.xml" />
+	<includefile source="campaign/record_char_reactionmodifiers.xml" />
+	<includefile source="campaign/record_char_secondarycharacteristics.xml" />
+	
+	<includefile source="campaign/record_npc.xml" />
+	<includefile source="campaign/record_npc_main.xml" />
+	<includefile source="campaign/record_npc_combat.xml" />
+	<includefile source="campaign/record_npc_abilities.xml" />
+	<includefile source="campaign/record_npc_spells.xml" />
+	<includefile source="campaign/record_npc_inventory.xml" />
+	
+	<includefile source="campaign/record_item.xml" />
+	
+	<includefile source="campaign/template_char.xml" />
+	
+	<includefile source="campaign/record_charnotes.xml" />
+	
+	<!-- Strings -->
+	<includefile source="strings/strings_DFRPG.xml" />
+	
+	<!-- Dice Delete -->
+	<die name="d20" merge="delete" />
+	<die name="d12" merge="delete" />
+	<die name="d10" merge="delete" />
+	<die name="d8" merge="delete" />
+	<die name="d4" merge="delete" />
+	<die name="dF" merge="delete" />
+	
+	
+  </base>
+</root>

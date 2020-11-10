@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>	
+	<icon name="status_committed" file="graphics/token/cond_committed.png" />
+	<icon name="status_crawling" file="graphics/token/cond_crawling.png" />
+	<icon name="status_crippled" file="graphics/token/cond_crippled.png" />
+	<icon name="status_crouch" file="graphics/token/cond_crouch.png" />
+	<icon name="status_dead" file="graphics/token/cond_dead.png" />
+	<icon name="status_defenseless" file="graphics/token/cond_defenseless.png" />
+	<icon name="status_grapple" file="graphics/token/cond_grapple.png" />
+	<icon name="status_grapple1" file="graphics/token/cond_grapple1.png" />
+	<icon name="status_grapple2" file="graphics/token/cond_grapple2.png" />
+	<icon name="status_kneel" file="graphics/token/cond_kneel.png" />
+	<icon name="status_mounted" file="graphics/token/cond_mounted.png" />
+	<icon name="status_onfire" file="graphics/token/cond_onfire.png" />
+	<icon name="status_penalty1" file="graphics/token/cond_penalty1.png" />
+	<icon name="status_penalty2" file="graphics/token/cond_penalty2.png" />
+	<icon name="status_penalty3" file="graphics/token/cond_penalty3.png" />
+	<icon name="status_penalty4" file="graphics/token/cond_penalty4.png" />
+	<icon name="status_prone_down" file="graphics/token/cond_prone_down.png" />
+	<icon name="status_prone_up" file="graphics/token/cond_prone_up.png" />
+	<icon name="status_seated" file="graphics/token/cond_seated.png" />
+	<icon name="status_shock" file="graphics/token/cond_shock.png" />
+	<icon name="status_sickened" file="graphics/token/cond_sickened.png" />
+	<icon name="status_stunned" file="graphics/token/cond_stunned.png" />
+	<icon name="status_surrendered" file="graphics/token/cond_surrendered.png" />
+	<icon name="status_unconscious" file="graphics/token/cond_unconscious.png" />
+	<icon name="status_surprise" file="graphics/token/cond_surprise.png" />
+</root>

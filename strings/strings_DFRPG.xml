@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<!-- Common -->
+	
+	<!-- Character - General -->
+	<string name="char_label_profession">Profession</string>
+
+	<string name="char_label_manasources">MANA SOURCES</string>
+	<string name="char_label_mana_max">Max</string>
+	<string name="char_label_mana_current">Current</string>
+	
+	<string name="char_label_ads">ADVANTAGES</string>
+	<string name="char_label_disads">DISADVANTAGES</string>
+	<string name="char_label_quirks">QUIRKS</string>
+
+	<string name="char_label_cm">CM</string>
+	
+	<string name="npc_label_spells">SPELLS</string>
+	<string name="char_label_injuryandfatigure">INJURY, FATIGUE &amp; CONTROL</string>
+  
+</root>

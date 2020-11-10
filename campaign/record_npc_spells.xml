@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	
+	<windowclass name="npcsheet_spells">
+		<script file="campaign/scripts/npc_spells.lua" />
+		<sheetdata>
+			<anchor_column name="contentanchor">
+				<bounds>1,0,-1,0</bounds>
+			</anchor_column>
+
+			<anchor_column name="columnanchor">
+				<anchored to="contentanchor" />
+			</anchor_column>
+
+			<header_column name="header_spells">
+				<static textres="npc_label_spells" />
+				<color>#808080</color>
+			</header_column>
+			<button_iedit name="spells_iedit">
+				<anchored to="header_spells" position="righthigh" offset="-20,0" />
+				<target>spells</target>
+			</button_iedit>
+			<button_iadd name="spells_iadd">
+				<anchored to="spells_iedit" position="lefthigh" offset="5,0" />
+				<target>spells</target>
+			</button_iadd>
+			<list_npcspells name="spells">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+					<left offset="0" />
+					<right offset="-5" />
+				</anchored>
+				<class>npc_spells</class>
+			</list_npcspells>
+
+		</sheetdata>
+	</windowclass>
+
+
+	<windowclass name="npc_spells">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored height="0" width="0">
+					<top />
+					<right />
+				</anchored>
+			</genericcontrol>
+			<genericcontrol name="bottomanchor">
+				<anchored height="0" width="0">
+					<top offset="20" />
+					<right />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored to="rightanchor" >
+					<top offset="2" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			
+			<number_charlevelfield name="level">
+				<rollable_ability />
+				<anchored to="rightanchor" width="20" height="20">
+					<top offset="2" />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<tabtarget next="points" prev="name" />
+			</number_charlevelfield>
+			<string_textlistitem name="name">
+				<anchored height="20">
+					<top offset="2" />
+					<left offset="45" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<nodrag />
+				<tabtarget next="level" />
+			</string_textlistitem>
+			<button_charroll>
+				<rollable_button_ability />
+				<anchored>
+					<top offset="2" />
+					<left offset="20" />
+				</anchored>
+			</button_charroll>
+		</sheetdata>
+	</windowclass>
+	
+</root>

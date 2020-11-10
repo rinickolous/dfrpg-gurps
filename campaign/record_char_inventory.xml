@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_inventory">
+    <script>
+      function onInit()
+				onEncumbranceChanged();
+      end
+      function onEncumbranceChanged()
+				local rActor = ActorManager.getActor("pc", getDatabaseNode());
+				ActorManager2.updateEncumbrance(rActor);
+      end
+    </script>
+		<sheetdata>
+			<frame_char name="inventoryframe">
+				<anchored>
+					<top />
+					<bottom offset="-120"/>
+					<left offset="15"/>
+					<right offset="-29"/>
+				</anchored>
+			</frame_char>
+			
+			<label name="count_label">
+				<anchored to="inventoryframe" position="insidetopleft" offset="20,10" width="20" />
+				<center />
+				<static>#</static>
+			</label>
+			<genericcontrol name="rightanchor">
+				<anchored to="inventoryframe" width="0" height="0">
+					<top offset="10" />
+					<right offset="-20" />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			
+			<genericcontrol name="idelete_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			
+			<genericcontrol name="shortcut_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-2" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			<genericcontrol name="carried_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<icon>char_inv_carried_header</icon>
+				<tooltip textres="char_tooltip_itemcarried" />
+			</genericcontrol>
+			<label name="weight_label">
+				<anchored to="rightanchor" width="30">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<center />
+				<static textres="char_label_itemweight" />
+				<tooltip textres="char_tooltip_itemweight" />
+			</label>
+			<label name="location_label">
+				<anchored to="rightanchor" width="80">
+					<top />
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<center />
+				<static textres="char_label_itemlocation" />
+			</label>
+			<label name="name_label">
+				<anchored to="rightanchor">
+					<top />
+					<left parent="inventoryframe" offset="55" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<static textres="char_label_itemname" />
+				<center />
+			</label>
+
+			<list_charinv name="inventorylist">
+				<anchored to="inventoryframe">
+					<top offset="40" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+			</list_charinv>
+			<scrollbar>
+				<anchored to="inventorylist" />
+				<target>inventorylist</target>
+			</scrollbar>
+
+			<button_iedit name="inventorylist_iedit">
+				<anchored to="inventorylist" position="aboveright" offset="5,10" />
+				<target>inventorylist</target>
+			</button_iedit>
+			<button_iadd name="inventorylist_iadd">
+				<anchored to="inventorylist_iedit" position="lefthigh" offset="5,0" />
+				<target>inventorylist</target>
+			</button_iadd>
+			
+			<frame_char name="encumbranceframe">
+				<anchored>
+					<top anchor="bottom" offset="-120"/>
+					<bottom offset="-15"/>
+					<left offset="15"/>
+					<right offset="-29"/>
+				</anchored>
+			</frame_char>
+			<simplenumber name="encumbranceload" source="encumbrance.load">
+				<anchored to="encumbranceframe" position="insidetopleft" offset="150,30" width="70" height="20" />
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<readonly />
+        <script>
+          function onValueChanged()
+						window.onEncumbranceChanged();
+          end
+        </script>
+			</simplenumber>
+			<label name="encumbrance_label">
+				<anchored to="encumbranceframe" position="insidetopleft" offset="15,30" />
+				<static textres="char_label_totalweight" />
+			</label>
+
+      <simplestring name="encumbrancelevel" source="encumbrance.level">
+        <anchored to="encumbranceframe" position="insidetopleft" offset="150,60" width="70" height="20" />
+        <frame name="fieldlight" offset="7,5,7,5" />
+        <readonly />
+        <center />
+      </simplestring>
+      <label name="encumbrancelevel_label">
+        <anchored to="encumbranceframe" position="insidetopleft" offset="15,60" />
+        <static textres="char_label_encumbrancelevel" />
+      </label>
+		</sheetdata>
+	</windowclass>
+</root>

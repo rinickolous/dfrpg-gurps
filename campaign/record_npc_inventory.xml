@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="npcsheet_inventory">
+	<script>
+			function update(bReadOnly)
+				if bReadOnly then
+					if inventorylist_iedit then
+						inventorylist_iedit.setValue(0);
+						inventorylist_iedit.setVisible(false);
+					end
+				else
+					if inventorylist_iedit then
+						inventorylist_iedit.setVisible(true);
+					end
+				end
+				for _,w in ipairs(inventorylist.getWindows()) do
+					w.count.setReadOnly(bReadOnly);
+					w.name.setReadOnly(bReadOnly);
+					w.location.setReadOnly(bReadOnly);
+					w.weight.setReadOnly(bReadOnly);
+				end
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="contentanchor">
+				<bounds>1,0,-1,0</bounds>
+			</anchor_column>
+
+			<anchor_column name="columnanchor">
+				<anchored to="contentanchor" />
+			</anchor_column>
+
+			<header_column name="header_inventory">
+				<static textres="npc_label_inventory" />
+				<color>#808080</color>
+			</header_column>
+			<button_iedit name="inventorylist_iedit">
+				<anchored to="header_inventory" position="righthigh" offset="-20,0" />
+				<target>inventorylist</target>
+			</button_iedit>
+			<button_iadd name="inventorylist_iadd">
+				<anchored to="inventorylist_iedit" position="lefthigh" offset="5,0" />
+				<target>inventorylist</target>
+			</button_iadd>
+
+			<genericcontrol name="rightanchor">
+				<anchored to="contentanchor" width="0" height="0">
+					<top offset="20" />
+					<right offset="-20" />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			
+			<genericcontrol name="idelete_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top offset="7"/>
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			
+			<genericcontrol name="shortcut_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top offset="10"/>
+					<right anchor="left" relation="relative" offset="0" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			<genericcontrol name="carried_header">
+				<anchored to="rightanchor" width="20" height="20">
+					<top offset="10"/>
+					<right anchor="left" relation="relative" offset="7" />
+				</anchored>
+				<icon>char_inv_carried_header</icon>
+				<tooltip textres="char_tooltip_itemcarried" />
+			</genericcontrol>
+			<label name="weight_label">
+				<anchored to="rightanchor" width="30">
+					<top offset="10"/>
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<center />
+				<static textres="char_label_itemweight" />
+				<tooltip textres="char_tooltip_itemweight" />
+			</label>
+			<label name="location_label">
+				<anchored to="rightanchor" width="80">
+					<top offset="10"/>
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<center />
+				<static textres="char_label_itemlocation" />
+			</label>
+			<label name="name_label">
+				<anchored to="rightanchor">
+					<top offset="10"/>
+					<left parent="columnanchor" offset="55" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<static textres="char_label_itemname" />
+				<center />
+			</label>
+			<label name="count_label">
+				<anchored to="rightanchor" width="60">
+					<top offset="10"/>
+					<right anchor="left" relation="relative" offset="-10" />
+				</anchored>
+				<center />
+				<static>#</static>
+			</label>
+
+			<list_charinv name="inventorylist">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="25" />
+					<left offset="0" />
+					<right offset="-5" />
+				</anchored>
+			</list_charinv>
+		</sheetdata>
+	</windowclass>
+</root>
