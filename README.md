@@ -17,5 +17,6 @@ NPC Sheet:
 - Added an "Inventory" tab, useful for looting NPCs.
 
 #GCS Compatibility
+
 As this ruleset makes significant changes to the character format, importing characters from GCS will cause some issues by default.
 To fix this, the ruleset comes with Output Templates for GCS, which export the character sheet into a format more compatible with this extension.
