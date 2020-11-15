@@ -14,6 +14,7 @@
   <base>
   
 	<!-- High Level Scripts -->
+	<script name="DataCommonGURPS" file="scripts/data_common_GURPS4e.lua" />
 	<script name="ActorManager2" file="scripts/manager_actor2.lua" />
 	
 	<!-- Campaign Records -->
